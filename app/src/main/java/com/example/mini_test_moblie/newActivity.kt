@@ -13,6 +13,18 @@ class newActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         
+    setSupportActionBar(binding.toolbar)
         
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish() // 현재 액티비티 종료
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
