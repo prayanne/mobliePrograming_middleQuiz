@@ -60,21 +60,21 @@ class MainActivity : AppCompatActivity() {
                 popup.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.goCalc1 -> {
-                            var intent = Intent(this@MainActivity, Calc1Activity::class.java)
+                            var intent = Intent(this@MainActivity, CalcActivity::class.java)
                             intent.putExtra("calcType", false)
                             resultLauncher.launch(intent)
                             true
                         }
 
                         R.id.goCalc2 -> {
-                            var intent = Intent(this@MainActivity, Calc1Activity::class.java)
+                            var intent = Intent(this@MainActivity, CalcActivity::class.java)
                             intent.putExtra("calcType", true)
                             resultLauncher.launch(intent)
                             true
                         }
 
                         R.id.goNew -> {
-                            startActivity(Intent(this@MainActivity, Calc1Activity::class.java))
+                            startActivity(Intent(this@MainActivity, NewActivity::class.java))
                             true
                         }
 

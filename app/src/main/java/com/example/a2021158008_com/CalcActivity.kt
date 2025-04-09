@@ -7,14 +7,13 @@ import android.util.Log
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.helper.widget.Grid
-import com.example.a2021158008_com.databinding.ActivityCalc1Binding
+import com.example.a2021158008_com.databinding.ActivityCalcBinding
 
-class Calc1Activity : AppCompatActivity() {
-    private lateinit var binding: ActivityCalc1Binding
+class CalcActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCalcBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCalc1Binding.inflate(layoutInflater)
+        binding = ActivityCalcBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var priStr = ""
@@ -109,7 +108,7 @@ class Calc1Activity : AppCompatActivity() {
         fun equal(){
             if(priSta && operSta){
                 returnMessage = "수식: " + priStr + " " + oper + " " + latStr + " = " + calcResult().toString()
-                Toast.makeText(this@Calc1Activity, returnMessage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CalcActivity, returnMessage, Toast.LENGTH_SHORT).show()
             }
         }
 
