@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingTop="30dp"
+    tools:context=".CalcActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/numBlank"
+        android:hint="put num here"/>
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="4"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:text="7"
+            android:id="@+id/calc7"/>
+        <Button
+            android:text="8"
+            android:id="@+id/calc8"/>
+        <Button
+            android:text="9"
+            android:id="@+id/calc9"/>
+        <Button
+            android:text="/"
+            android:id="@+id/calcD"/>
+        <Button
+            android:text="4"
+            android:id="@+id/calc4"/>
+        <Button
+            android:text="5"
+            android:id="@+id/calc5"/>
+        <Button
+            android:text="6"
+            android:id="@+id/calc6"/>
+        <Button
+            android:text="x"
+            android:id="@+id/calcX"/>
+        <Button
+            android:text="1"
+            android:id="@+id/calc1"/>
+        <Button
+            android:text="2"
+            android:id="@+id/calc2"/>
+        <Button
+            android:text="3"
+            android:id="@+id/calc3"/>
+        <Button
+            android:text="-"
+            android:id="@+id/calcM"/>
+        <Button
+            android:text="0"
+            android:id="@+id/calc0"/>
+        <Button
+            android:layout_rowSpan="2"
+            android:text="="
+            android:id="@+id/calcE"/>
+        <Button
+            android:text="+"
+            android:id="@+id/calcP"/>
+
+    </GridLayout>
+
+</LinearLayout>
