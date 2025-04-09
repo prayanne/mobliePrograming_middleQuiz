@@ -7,14 +7,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class newActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityNewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityNewBinding.inflate(layout_inflater)
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_new)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        setContentView(binding.root)
+        
+        
     }
 }
