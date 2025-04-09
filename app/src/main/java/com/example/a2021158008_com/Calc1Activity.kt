@@ -1,5 +1,7 @@
 package com.example.a2021158008_com
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.GridLayout
@@ -18,6 +20,7 @@ class Calc1Activity : AppCompatActivity() {
         var priStr = ""
         var latStr = ""
         var oper = ""
+        var returnMessage = ""
         var priSta = false
         var operSta = false
 
@@ -100,11 +103,13 @@ class Calc1Activity : AppCompatActivity() {
         fun operation(s: String){
             priSta = true
             oper += s
+            binding.resultVal.setText(priStr + " " + oper)
             enable()
         }
         fun equal(){
             if(priSta && operSta){
-                Toast.makeText(this@Calc1Activity, "수식: " + priStr + " " + oper + " " + latStr + " = " + calcResult().toString(), Toast.LENGTH_SHORT).show()
+                returnMessage = "수식: " + priStr + " " + oper + " " + latStr + " = " + calcResult().toString()
+                Toast.makeText(this@Calc1Activity, returnMessage, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -124,6 +129,14 @@ class Calc1Activity : AppCompatActivity() {
         binding.calcM.setOnClickListener{operation("-")}
         binding.calcX.setOnClickListener{operation("x")}
         binding.calcD.setOnClickListener{operation("/")}
-        binding.calcE.setOnClickListener{equal(); binding.resultVal.setText(calcResult().toString())}
+        binding.calcE.setOnClickListener{
+            equal()
+            binding.resultVal.setText(calcResult().toString())
+            val returnIntent = Intent().apply{
+                putExtra("result", returnMessage)
+            }
+            setResult(Activity.RESULT_OK, returnIntent)
+            finish()
+        }
     }
 }
