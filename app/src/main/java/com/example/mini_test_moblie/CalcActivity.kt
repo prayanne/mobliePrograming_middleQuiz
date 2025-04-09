@@ -20,6 +20,7 @@ class CalcActivity : AppCompatActivity() {
         var calcBool: Boolean = false
         var tempCalc: String = ""
         var calcStr: String = ""
+        var sendMessage: String = ""
 
         fun pushString(s:String, t:String){
             Log.d("calc", endState.toString())
@@ -64,6 +65,7 @@ class CalcActivity : AppCompatActivity() {
 
         fun pushResult(): Int{
             var result: Int = 0
+
             if (calcBool && tempCalc != ""){
                 var numList = tempCalc.split(",")
                 var calcList = calcStr.split(",")
@@ -87,6 +89,9 @@ class CalcActivity : AppCompatActivity() {
                     }
                 }
             }
+
+
+            sendMessage = "결과: " + binding.numBlank.text.toString() + " = " + result.toString()
             pushString(result.toString(), "result")
 
             endState = true
@@ -118,7 +123,7 @@ class CalcActivity : AppCompatActivity() {
             val result: Int
             result = pushResult()
             val returnIntent = Intent().apply {
-                putExtra("result", result.toString())
+                putExtra("result", sendMessage)
             }
             setResult(Activity.RESULT_OK, returnIntent)
             finish()
