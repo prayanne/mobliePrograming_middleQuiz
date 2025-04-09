@@ -29,17 +29,17 @@ class Calc1Activity : AppCompatActivity() {
                 binding.toolbar.title = "계산기2"
 
                 val lpP = binding.calcP.layoutParams as GridLayout.LayoutParams
-                lpP.columnSpec = GridLayout.spec(2)
+                lpP.columnSpec = GridLayout.spec(2, 1, 1f)
                 binding.calcP.layoutParams = lpP
 
                 val lpM = binding.calcM.layoutParams as GridLayout.LayoutParams
-                lpM.columnSpec = GridLayout.spec(1)
-                lpM.rowSpec = GridLayout.spec(3)
+                lpM.columnSpec = GridLayout.spec(1, 1,1f)
+                lpM.rowSpec = GridLayout.spec(3, 1, 1f)
                 binding.calcM.layoutParams = lpM
 
                 val lpE = binding.calcE.layoutParams as GridLayout.LayoutParams
-                lpE.columnSpec = GridLayout.spec(3)
-                lpE.rowSpec = GridLayout.spec(2,2)
+                lpE.columnSpec = GridLayout.spec(3, 1, 1f)
+                lpE.rowSpec = GridLayout.spec(2,2, 2f)
                 binding.calcE.layoutParams = lpE
             }
         }
