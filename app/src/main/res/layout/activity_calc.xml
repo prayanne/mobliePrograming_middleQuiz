@@ -21,7 +21,6 @@
         android:columnCount="4"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
-
         <Button
             android:text="7"
             android:id="@+id/calc7"/>
