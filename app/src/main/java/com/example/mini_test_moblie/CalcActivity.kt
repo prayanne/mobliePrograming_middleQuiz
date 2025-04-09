@@ -1,17 +1,13 @@
 package com.example.mini_test_moblie
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.EditText
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.mini_test_moblie.databinding.ActivityCalcBinding
-import kotlin.math.log
+
 
 class CalcActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalcBinding
@@ -116,8 +112,17 @@ class CalcActivity : AppCompatActivity() {
         binding.calcM.setOnClickListener{ addCalcStr("-") }
         binding.calcX.setOnClickListener{ addCalcStr("x") }
         binding.calcD.setOnClickListener{ addCalcStr("/") }
-
-        binding.calcE.setOnClickListener{ pushResult() }
+        
+        // 결과 반환
+        binding.calcE.setOnClickListener{
+            val result: Int
+            result = pushResult()
+            val returnIntent = Intent().apply {
+                putExtra("result", result.toString())
+            }
+            setResult(Activity.RESULT_OK, returnIntent)
+            finish()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
