@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_calc1"
+        android:title="계산기1" />
+    <item
+        android:id="@+id/action_calc2"
+        android:title="계산기2" />
+    <item
+        android:id="@+id/action_newActivity"
+        android:title="새로운 창" />
+</menu>

@@ -9,17 +9,6 @@
         android:id="@+id/action_more"
         android:title="더보기"
         android:icon="@android:drawable/ic_menu_more"
-        app:showAsAction="never">
-        <menu>
-            <item
-                android:id="@+id/calc1Activity"
-                android:title="계산기1" />
-            <item
-                android:id="@+id/calc2Acitivy"
-                android:title="계산기2" />
-            <item
-                android:id="@+id/newActivity"
-                android:title="새로운 창" />
-        </menu>
+        app:showAsAction="ifRoom">
     </item>
 </menu>
