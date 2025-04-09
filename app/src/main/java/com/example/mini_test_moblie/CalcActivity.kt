@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mini_test_moblie.databinding.ActivityCalcBinding
+import kotlin.math.log
 
 class CalcActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalcBinding
@@ -19,17 +20,22 @@ class CalcActivity : AppCompatActivity() {
         binding = ActivityCalcBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var endState: Boolean = false
         var calcBool: Boolean = false
         var tempCalc: String = ""
         var calcStr: String = ""
 
         fun pushString(s:String, t:String){
-            if (t == "num"){ binding.numBlank.setText(binding.numBlank.text.toString() + s) }
-            else if(t == "calc"){ binding.numBlank.setText(binding.numBlank.text.toString() + " " + s) }
+            Log.d("calc", endState.toString())
+            if (endState) { endState = false; binding.numBlank.setText("")}
+            if (t == "num"){
+                binding.numBlank.setText(binding.numBlank.text.toString() + s) }
+            else if(t == "calc"){ binding.numBlank.setText(binding.numBlank.text.toString() + " " + s + " ") }
             else if(t == "result") { binding.numBlank.setText(s) }
         }
 
         fun calculator(i: String, n: String, c:String): Int{
+            Log.d("calc", i + ", " + n + ", " + i.toInt() + n.toInt())
             when (c) {
                 "+" -> return i.toInt() + n.toInt()
                 "-" -> return i.toInt() - n.toInt()
@@ -70,23 +76,28 @@ class CalcActivity : AppCompatActivity() {
                     if (i == numList.lastIndex) break
                     if ( i == 0){
                         when (calcList[i]) {
-                            "+" -> result = calculator(num[0].toString(), num[1].toString(), "+")
-                            "-" -> result = calculator(num[0].toString(), num[1].toString(), "-")
-                            "x" -> result = calculator(num[0].toString(), num[1].toString(), "x")
-                            "/" -> result = calculator(num[0].toString(), num[1].toString(), "/")
+                            "+" -> result = calculator(num, numList[i + 1], "+")
+                            "-" -> result = calculator(num, numList[i + 1], "-")
+                            "x" -> result = calculator(num, numList[i + 1], "x")
+                            "/" -> result = calculator(num, numList[i + 1], "/")
                         }
                     } else {
                         when (calcList[i]) {
-                            "+" -> result = calculator(result.toString(), num[i + 1].toString(), "+")
-                            "-" -> result = calculator(result.toString(), num[i + 1].toString(), "-")
-                            "x" -> result = calculator(result.toString(), num[i + 1].toString(), "*")
-                            "/" -> result = calculator(result.toString(), num[i + 1].toString(), "/")
+                            "+" -> result = calculator(result.toString(), numList[i + 1], "+")
+                            "-" -> result = calculator(result.toString(), numList[i + 1], "-")
+                            "x" -> result = calculator(result.toString(), numList[i + 1], "*")
+                            "/" -> result = calculator(result.toString(), numList[i + 1], "/")
                         }
                     }
-
                 }
             }
             pushString(result.toString(), "result")
+
+            endState = true
+            calcBool = false
+            tempCalc = ""
+            calcStr = ""
+
             return result
         }
         binding.calc0.setOnClickListener{ addInt("0") }
